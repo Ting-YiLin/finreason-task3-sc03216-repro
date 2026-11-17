@@ -1,0 +1,45 @@
+name: Import audited SC03216 stage-1 artifact
+on:
+  push:
+    branches: [main]
+    paths: ["bootstrap/stage1.tar.xz.b64"]
+permissions:
+  contents: write
+concurrency:
+  group: stage1-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verify payload and expand audited release
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, io, tarfile
+          encoded=Path("bootstrap/stage1.tar.xz.b64").read_text(encoding="ascii").strip()
+          raw=base64.b64decode(encoded,validate=True)
+          expected="5bf7c277aaa553af0a75e459d8013bf048bcb0786d9a83eb12883e4f89ab0406"
+          assert hashlib.sha256(raw).hexdigest()==expected, "Archive SHA-256 mismatch"
+          with tarfile.open(fileobj=io.BytesIO(raw),mode="r:xz") as tar:
+              for item in tar.getmembers():
+                  parts=Path(item.name).parts
+                  assert (item.isdir() or item.isfile()) and ".." not in parts and not item.name.startswith("/"),item.name
+                  assert ".git" not in parts and ".github" not in parts,item.name
+              tar.extractall(path=".",filter="data")
+          PY
+          python tools/verify_release.py
+          python -m unittest discover -s tests -v
+      - name: Commit validated 29-file publication
+        shell: bash
+        run: |
+          git rm -f bootstrap/stage1.tar.xz.b64
+          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git diff --cached --quiet || git commit -m "Publish audited 29-file stage-1 reproducibility artifact"
+          git push origin HEAD:main
