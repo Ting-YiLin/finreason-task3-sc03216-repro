@@ -1,0 +1,33 @@
+{
+  "raw_predictor_recreated": "P1-P5 332/332 outputs match frozen snapshots using original input-only Practice questions",
+  "public_practice_scoring_from_original_reference": {
+    "BASELINE": 153,
+    "P1": 153,
+    "P2": 158,
+    "P3": 147,
+    "P4": 153,
+    "P5": 152
+  },
+  "P2_diff": {
+    "changed_output_pairs": 6,
+    "rescued": 5,
+    "regressed": 0,
+    "rescued_ids": [
+      "DEV_000048",
+      "DEV_000058",
+      "DEV_000082",
+      "DEV_000083",
+      "DEV_000105"
+    ]
+  },
+  "limits": [
+    "Gold reference must be retrieved externally for public user re-scoring",
+    "R4 BASE158 original sealed casewise artifact unavailable",
+    "R6 original Xule logs/cache unavailable",
+    "R8 source map/logs unavailable",
+    "Official Test hidden labels not accessible"
+  ],
+  "remote_publication": false,
+  "zenodo_doi": null,
+  "validation_source": "original 2026-10-29 R1/R2, frozen 332, and Practice public reference records, examined 2026-11-17"
+}

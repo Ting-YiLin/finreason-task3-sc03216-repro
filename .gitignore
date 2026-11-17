@@ -1,0 +1,12 @@
+# Never publish original/raw/gold question content, official Test data, local cache, run history
+DATA/INPUT_ONLY/
+LOCAL_ONLY/
+OUTPUT_REPLAY/
+__pycache__/
+*.pyc
+.env
+*.pem
+*.key
+*.token
+*.log
+.DS_Store

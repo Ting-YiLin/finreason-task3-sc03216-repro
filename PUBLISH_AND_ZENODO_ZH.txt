@@ -1,0 +1,19 @@
+SC03216｜第一階段公開發布操作手冊（2026-11-17）
+
+目前交付的是本機已測試的「待發布」研究資料庫，不等於已經建立線上GitHub或Zenodo DOI。
+
+一、先發布 GitHub（程式碼託管）
+推薦庫名：finreason-task3-sc03216-repro。使用你已連線的 GitHub 帳號 Ting-YiLin。
+方法一：先開 https://github.com/new 建立 PUBLIC（公開）空庫，名稱使用上方；不用勾初始 README。然後在 Windows 解壓整包，進入根資料夾執行 PUBLISH_EXISTING_REPO_WINDOWS.bat（需已安裝git並完成GitHub登入/憑證；Git輸出顯示成功才算完成）。
+方法二：如果已有 gh（GitHub CLI命令工具）且已登入，執行 CREATE_AND_PUBLISH_REPO_WINDOWS.bat；它會建立公開庫並推送檔案。
+發布前可先執行 python tools/verify_release.py；任何不通過都不要上傳。
+
+二、發布後必須檢查：README、predictions、原型程式、重算工具、.gitignore均已在公共瀏覽器無登入情況可看到；沒有 SCORING_PRIVATE、Gold、Test 台帳、token、完整原始題目。確認 GitHub Commit SHA（提交雜湊）。
+
+三、Zenodo（研究典藏）永久識別碼：登入 https://zenodo.org → Profile → GitHub → Sync now → 啟用剛建立的庫 → 在GitHub建立 Release v1.0.0 → 回Zenodo核對典藏與實際 DOI（永久數位識別碼）。不要事先編造 DOI。
+
+四、回到論文：已核實公開 URL 後再替換 docs/CAMERA_READY_INSERTION_DRAFT.md 的佔位敘述。必須同步修改原稿所有 “public supplement” 敘述，不能拿未發布資料作為可查閱證據。若11/19截止前未發布，定稿應誠實說明尚未公開。
+
+五、授權裁決：程式碼要授權 MIT（寬鬆開源授權）或其他類型，請作者決定後加 LICENSE；現在未擅自替作者授權。外部 FinMR 資料集原有 CC BY 4.0 不因此更動。
+
+若 GitHub 推送顯示權限失敗或需要登入，請由帳號持有人完成驗證後重試，不要把驗證碼/密碼傳到聊天。

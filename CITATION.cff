@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility artifact, cite the FinReason Cup 2026 Task 3 working note and the underlying FinAuditing benchmark."
+title: "FinReason Cup Task 3 SC03216: Stage-1 Reproducibility Artifact"
+authors:
+  - family-names: Lin
+    given-names: Ting-Yi
+version: "0.1.0"
+type: software
+abstract: "Author-produced public-Practice predictions and an original XBRL repair prototype for retrospective reproduction. Does not recreate hidden-label Test, R4, R6 or R8 full executions."

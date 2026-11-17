@@ -1,0 +1,60 @@
+{
+  "population": "Public Practice 332; retrospectively explored",
+  "official_test_score": {
+    "accurate": 538,
+    "n": 680,
+    "status": "organizer-published aggregate, not independently replayable"
+  },
+  "per_arm_correct_on_practice": {
+    "BASELINE": 153,
+    "P1_RAW_SCOPE": 153,
+    "P2_SIGN_0015": 158,
+    "P3_DIM_0117": 147,
+    "P4_DIRECT_CALC_0126": 153,
+    "P5_CONSERVATIVE_COMBINED": 152
+  },
+  "p2_vs_baseline": {
+    "changed_pairs": 6,
+    "rescued": 5,
+    "regressed": 0,
+    "rescued_case_ids": [
+      "DEV_000048",
+      "DEV_000058",
+      "DEV_000082",
+      "DEV_000083",
+      "DEV_000105"
+    ],
+    "changed_but_still_incorrect_case_id": "DEV_000099",
+    "strict_parseable": {
+      "n": 147,
+      "baseline": 119,
+      "p2": 124
+    },
+    "grouped_splits": {
+      "TRAIN_DISCOVERY": {
+        "n": 197,
+        "baseline": 83,
+        "p2": 88
+      },
+      "TUNE_GROUPED": {
+        "n": 83,
+        "baseline": 42,
+        "p2": 42
+      },
+      "FROZEN_GROUPED_CHALLENGE": {
+        "n": 52,
+        "baseline": 28,
+        "p2": 28
+      }
+    }
+  },
+  "reported_not_independently_replayed": {
+    "R4_BASE158": 158,
+    "R4_SIGN_AND_CALC": 174,
+    "R8_DQC_SUPPORTED": 178,
+    "R8_SINGLE_AXIS_EXPLORATORY": 180,
+    "R6_FIVE_FILINGS": 5,
+    "R6_SEVEN_CASES_OFFICIAL_INCONSISTENCY": 7
+  },
+  "critical_limit": "R4 BASE158 sealed casewise source absent; R4/R6/R8 full original code/log provenance not available for clean replay."
+}
